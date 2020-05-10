@@ -34,6 +34,8 @@ class ContactsListViewController: UIViewController {
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
         contactsTableView.register(UINib(nibName: "ContactsTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactsTableViewCell")
+        contactsTableView.alwaysBounceVertical = false
+        contactsTableView.sectionIndexColor = UIColor.gray
         contactsTableView.tableFooterView = UIView()
     }
 
@@ -73,6 +75,10 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel?.sections[section].letter.capitalized
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //show detail screen here
     }
 }
 

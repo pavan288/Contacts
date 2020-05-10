@@ -20,7 +20,6 @@ class ContactsListViewModel {
             alphabeticContactsDict = Dictionary(grouping: contacts, by: { String($0.firstName.prefix(1))})
             let keys = alphabeticContactsDict.keys.sorted()
             sections = keys.map({ Section(letter: $0, contacts: alphabeticContactsDict[$0]!)})
-            print(sections)
         }
     }
     var sections: [Section] = []
