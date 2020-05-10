@@ -13,6 +13,8 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var favourtieButton: UIButton!
+    @IBOutlet weak var mobileLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     var contact: Contact?
     var gradient = CAGradientLayer()
 
@@ -52,6 +54,8 @@ class ContactDetailViewController: UIViewController {
         contactImageView.layer.borderWidth = 4
         contactImageView.layer.borderColor = UIColor.white.cgColor
         updateFavouriteButton()
+        emailLabel.text = contact?.email ?? ""
+        mobileLabel.text = contact?.phone ?? ""
     }
 
     func applyGradient() {
