@@ -20,6 +20,13 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-4l-5ZC">
+                                <rect key="frame" x="185" y="426" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="SFf-gG-Rep"/>
+                                    <constraint firstAttribute="height" constant="44" id="V86-T3-w0G"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -27,12 +34,15 @@
                             <constraint firstAttribute="bottom" secondItem="YyW-FU-Ao3" secondAttribute="bottom" id="R21-kp-Fp6"/>
                             <constraint firstItem="YyW-FU-Ao3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Soe-Vc-dzD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YyW-FU-Ao3" secondAttribute="trailing" id="Vcs-ah-Ced"/>
+                            <constraint firstItem="Hid-4l-5ZC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cwN-Ve-lgj"/>
+                            <constraint firstItem="Hid-4l-5ZC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yZC-T0-Q5W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="cUb-Tw-0ba"/>
                     <connections>
                         <outlet property="contactsTableView" destination="YyW-FU-Ao3" id="b6S-Ky-NAx"/>
+                        <outlet property="loader" destination="Hid-4l-5ZC" id="bha-uP-N3w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -154,7 +164,7 @@
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-fI-Jon">
                                         <rect key="frame" x="16" y="240" width="382" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

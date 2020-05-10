@@ -17,10 +17,12 @@ class AddNewContactViewController: UIViewController {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     var gradient = CAGradientLayer()
+    var viewModel: AddNewContactViewModel!
 
     static func getController() -> AddNewContactViewController? {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = storyBoard.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController {
+            controller.viewModel = AddNewContactViewModel(delegate: controller)
             return controller
         }
         return nil
@@ -92,6 +94,12 @@ class AddNewContactViewController: UIViewController {
     @objc func done(_ sender: Any) {
         self.view.endEditing(true)
         showLoader()
+        var params = [String: String]()
+        params["firstName"] = self.firstNameTextField.text
+        params["lastName"] = self.lastNameTextField.text
+        params["email"] = self.emailTextField.text
+        params["phone"] = self.phoneTextField.text
+        viewModel.addNewContact(with: params)
     }
 }
 
@@ -99,6 +107,22 @@ extension AddNewContactViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+}
+
+extension AddNewContactViewController: AddNewContactVCDelegate {
+    func showError(with message: String) {
+        let alert = UIAlertController(title: "Sorry!", message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            self.dismiss(animated: true)
+        }
+        alert.addAction(okayAction)
+        self.present(alert, animated: true)
+    }
+
+    func dismiss() {
+        self.dismiss(animated: true)
+        hideLoader()
     }
 }
 

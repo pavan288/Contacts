@@ -9,18 +9,18 @@
 import UIKit
 
 class ContactsListViewController: UIViewController {
-
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var contactsTableView: UITableView!
     var viewModel: ContactsListViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        viewModel = ContactsListViewModel()
-        viewModel?.delegate = self
+        viewModel = ContactsListViewModel(delegate: self)
         setupTableView()
         fetchData()
         setupNavBar()
+        showLoader()
     }
 
     func setupNavBar() {
@@ -50,6 +50,18 @@ class ContactsListViewController: UIViewController {
     private func fetchData() {
         viewModel?.fetchContactsList()
     }
+
+    func showLoader() {
+        self.view.isUserInteractionEnabled = false
+        loader.startAnimating()
+        loader.isHidden = false
+    }
+
+    func hideLoader() {
+        self.view.isUserInteractionEnabled = true
+        loader.isHidden = true
+        loader.stopAnimating()
+    }
 }
 
 extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -76,7 +88,7 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return viewModel?.sections.map({ $0.letter })
+        return viewModel?.sections.map({ $0.letter.capitalized })
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -101,6 +113,7 @@ extension ContactsListViewController: ContactsListVCDelegate {
     }
 
     func populateContacts() {
+        hideLoader()
         contactsTableView.reloadData()
     }
 }

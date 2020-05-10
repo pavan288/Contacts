@@ -25,23 +25,27 @@ class ContactsListViewModel {
     var sections: [Section] = []
     var alphabeticContactsDict: [String: [Contact]] = [:]
 
+    init(delegate: ContactsListVCDelegate) {
+        self.delegate = delegate
+    }
+
     func fetchContactsList() {
         let url = NetworkManager.baseURL + "/contacts"
 
         NetworkManager.shared.get(urlString: url) { [weak self] (data, response, error) in
             if error != nil {
-                self?.delegate.showError(with: "Could not fetch contacts!")
+                self?.delegate.showError(with: "We could not fetch contacts!")
             } else {
                 do {
                     guard let data = data else {
-                        self?.delegate.showError(with: "Could not parse contacts!")
+                        self?.delegate.showError(with: "We could not parse contacts!")
                         return
                     }
                     let contactsArray = try JSONDecoder().decode([Contact].self, from: data)
                     self?.contacts = contactsArray
                     self?.delegate.populateContacts()
                 } catch {
-                    self?.delegate.showError(with: "Could not parse contacts!")
+                    self?.delegate.showError(with: "We could not parse contacts!")
                 }
             }
         }
