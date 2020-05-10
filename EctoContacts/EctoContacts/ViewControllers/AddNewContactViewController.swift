@@ -10,6 +10,7 @@ import UIKit
 
 class AddNewContactViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -29,9 +30,16 @@ class AddNewContactViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        contactImageView.layer.cornerRadius = contactImageView.frame.size.height / 2
+        contactImageView.layer.borderWidth = 4
+        contactImageView.layer.borderColor = UIColor.white.cgColor
         setupNavBar()
         applyGradient()
         setupTextFields()
+    }
+
+    override func viewWillLayoutSubviews() {
+        self.gradient.frame = self.headerView.bounds
     }
 
     func setupNavBar() {
@@ -49,6 +57,7 @@ class AddNewContactViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 0.5, y: 1)
         gradient.colors = [startingColour.cgColor, endingColour.cgColor]
         headerView.layer.insertSublayer(self.gradient, at: 0)
+        print(headerView.layer.sublayers)
     }
 
     func setupTextFields() {
@@ -81,7 +90,6 @@ extension AddNewContactViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
-                self.bottomConstraint.constant = 34
             }
         }
     }
@@ -89,7 +97,6 @@ extension AddNewContactViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
-            self.bottomConstraint.constant = 294
         }
     }
 }
