@@ -55,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2745284024687498009CE9EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				27E165432467CBEE006F9DE5 /* Themes.swift */,
+				27B0AC572467AEEC0016B3B7 /* NetworkManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		27B0AC342466E7DC0016B3B7 = {
 			isa = PBXGroup;
 			children = (
@@ -74,18 +83,17 @@
 		27B0AC3F2466E7DC0016B3B7 /* EctoContacts */ = {
 			isa = PBXGroup;
 			children = (
+				2745284024687498009CE9EF /* Helpers */,
 				27E1653E2467C1F1006F9DE5 /* Cells */,
 				27B0AC562467AE7E0016B3B7 /* Models */,
 				27B0AC552467AE6D0016B3B7 /* ViewModels */,
 				27B0AC542467AE650016B3B7 /* ViewControllers */,
 				27B0AC402466E7DC0016B3B7 /* AppDelegate.swift */,
 				27B0AC422466E7DC0016B3B7 /* SceneDelegate.swift */,
-				27B0AC572467AEEC0016B3B7 /* NetworkManager.swift */,
 				27B0AC462466E7DC0016B3B7 /* Main.storyboard */,
 				27B0AC492466E7DE0016B3B7 /* Assets.xcassets */,
 				27B0AC4B2466E7DE0016B3B7 /* LaunchScreen.storyboard */,
 				27B0AC4E2466E7DE0016B3B7 /* Info.plist */,
-				27E165432467CBEE006F9DE5 /* Themes.swift */,
 			);
 			path = EctoContacts;
 			sourceTree = "<group>";
