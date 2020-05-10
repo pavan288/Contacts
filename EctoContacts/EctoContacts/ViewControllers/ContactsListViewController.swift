@@ -20,26 +20,43 @@ class ContactsListViewController: UIViewController {
         viewModel?.delegate = self
         setupTableView()
         fetchData()
+        setupNavBar()
     }
 
-    func setupTableView() {
+    func setupNavBar() {
+        self.navigationItem.title = "Contacts"
+        self.navigationController?.navigationBar.tintColor = Themes.primaryColour
+        let addContactButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addContact(_:)))
+        self.navigationItem.setRightBarButton(addContactButton, animated: false)
+    }
+
+    private func setupTableView() {
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
+        contactsTableView.register(UINib(nibName: "ContactsTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactsTableViewCell")
+        contactsTableView.estimatedRowHeight = 64
+        contactsTableView.rowHeight = UITableView.automaticDimension
+        contactsTableView.tableFooterView = UIView()
     }
 
-    func fetchData() {
+    @objc func addContact(_ sender: Any) {
+        print("add pressed")
+    }
+
+    private func fetchData() {
         viewModel?.fetchContactsList()
     }
-
 }
 
 extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel?.contacts.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath) as! ContactsTableViewCell
+        cell.contactName.text = viewModel?.getFullName(at: indexPath.row)
+        return cell
     }
 }
 

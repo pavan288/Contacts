@@ -20,10 +20,12 @@ class NetworkManager {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             guard let data = data else { return }
-            if error != nil {
-                completion(nil, response, error)
-            } else {
-                completion(data, response, nil)
+            DispatchQueue.main.async {
+                if error != nil {
+                    completion(nil, response, error)
+                } else {
+                    completion(data, response, nil)
+                }
             }
         })
         task.resume()

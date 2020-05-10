@@ -24,21 +24,25 @@ class ContactsListViewModel {
             if error != nil {
                 self?.delegate.showError(with: "Could not fetch contacts!")
             } else {
-                DispatchQueue.main.async {
-                    do {
-                        guard let data = data else {
-                            self?.delegate.showError(with: "Could not parse contacts!")
-                            return
-                        }
-                        let contactsArray = try JSONDecoder().decode([Contact].self, from: data)
-                        self?.contacts = contactsArray
-                        print(contactsArray)
-                        self?.delegate.populateContacts()
-                    } catch {
+                do {
+                    guard let data = data else {
                         self?.delegate.showError(with: "Could not parse contacts!")
+                        return
                     }
+                    let contactsArray = try JSONDecoder().decode([Contact].self, from: data)
+                    self?.contacts = contactsArray
+                    print(contactsArray)
+                    self?.delegate.populateContacts()
+                } catch {
+                    self?.delegate.showError(with: "Could not parse contacts!")
                 }
             }
         }
+    }
+
+    func getFullName(at index: Int) -> String {
+        let contact = contacts[index]
+        let fullName = [contact.firstName, contact.lastName].joined(separator: " ")
+        return fullName
     }
 }

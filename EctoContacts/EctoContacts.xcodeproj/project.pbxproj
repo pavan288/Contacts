@@ -16,6 +16,9 @@
 		27B0AC582467AEEC0016B3B7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0AC572467AEEC0016B3B7 /* NetworkManager.swift */; };
 		27B0AC5A2467B0F30016B3B7 /* ContactsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0AC592467B0F30016B3B7 /* ContactsListViewModel.swift */; };
 		27B0AC5C2467B8E80016B3B7 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0AC5B2467B8E80016B3B7 /* Contact.swift */; };
+		27E165412467C20C006F9DE5 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1653F2467C20C006F9DE5 /* ContactsTableViewCell.swift */; };
+		27E165422467C20C006F9DE5 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E165402467C20C006F9DE5 /* ContactsTableViewCell.xib */; };
+		27E165442467CBEE006F9DE5 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E165432467CBEE006F9DE5 /* Themes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		27B0AC572467AEEC0016B3B7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		27B0AC592467B0F30016B3B7 /* ContactsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewModel.swift; sourceTree = "<group>"; };
 		27B0AC5B2467B8E80016B3B7 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		27E1653F2467C20C006F9DE5 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		27E165402467C20C006F9DE5 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
+		27E165432467CBEE006F9DE5 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 		27B0AC3F2466E7DC0016B3B7 /* EctoContacts */ = {
 			isa = PBXGroup;
 			children = (
+				27E1653E2467C1F1006F9DE5 /* Cells */,
 				27B0AC562467AE7E0016B3B7 /* Models */,
 				27B0AC552467AE6D0016B3B7 /* ViewModels */,
 				27B0AC542467AE650016B3B7 /* ViewControllers */,
@@ -72,6 +79,7 @@
 				27B0AC492466E7DE0016B3B7 /* Assets.xcassets */,
 				27B0AC4B2466E7DE0016B3B7 /* LaunchScreen.storyboard */,
 				27B0AC4E2466E7DE0016B3B7 /* Info.plist */,
+				27E165432467CBEE006F9DE5 /* Themes.swift */,
 			);
 			path = EctoContacts;
 			sourceTree = "<group>";
@@ -98,6 +106,15 @@
 				27B0AC5B2467B8E80016B3B7 /* Contact.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		27E1653E2467C1F1006F9DE5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				27E1653F2467C20C006F9DE5 /* ContactsTableViewCell.swift */,
+				27E165402467C20C006F9DE5 /* ContactsTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E165422467C20C006F9DE5 /* ContactsTableViewCell.xib in Resources */,
 				27B0AC4D2466E7DE0016B3B7 /* LaunchScreen.storyboard in Resources */,
 				27B0AC4A2466E7DE0016B3B7 /* Assets.xcassets in Resources */,
 				27B0AC482466E7DC0016B3B7 /* Main.storyboard in Resources */,
@@ -171,10 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E165412467C20C006F9DE5 /* ContactsTableViewCell.swift in Sources */,
 				27B0AC5C2467B8E80016B3B7 /* Contact.swift in Sources */,
 				27B0AC5A2467B0F30016B3B7 /* ContactsListViewModel.swift in Sources */,
 				27B0AC582467AEEC0016B3B7 /* NetworkManager.swift in Sources */,
 				27B0AC452466E7DC0016B3B7 /* ContactsListViewController.swift in Sources */,
+				27E165442467CBEE006F9DE5 /* Themes.swift in Sources */,
 				27B0AC412466E7DC0016B3B7 /* AppDelegate.swift in Sources */,
 				27B0AC432466E7DC0016B3B7 /* SceneDelegate.swift in Sources */,
 			);
