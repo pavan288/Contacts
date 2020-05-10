@@ -11,11 +11,11 @@ import UIKit
 class AddNewContactViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var contactImageView: UIImageView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     var gradient = CAGradientLayer()
 
     static func getController() -> AddNewContactViewController? {
@@ -36,10 +36,29 @@ class AddNewContactViewController: UIViewController {
         setupNavBar()
         applyGradient()
         setupTextFields()
+        hideLoader()
     }
 
     override func viewWillLayoutSubviews() {
         self.gradient.frame = self.headerView.bounds
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    func showLoader() {
+        self.view.isUserInteractionEnabled = false
+        loader.startAnimating()
+        loader.isHidden = false
+    }
+
+    func hideLoader() {
+        self.view.isUserInteractionEnabled = true
+        loader.isHidden = true
+        loader.stopAnimating()
     }
 
     func setupNavBar() {
@@ -57,7 +76,6 @@ class AddNewContactViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 0.5, y: 1)
         gradient.colors = [startingColour.cgColor, endingColour.cgColor]
         headerView.layer.insertSublayer(self.gradient, at: 0)
-        print(headerView.layer.sublayers)
     }
 
     func setupTextFields() {
@@ -68,12 +86,12 @@ class AddNewContactViewController: UIViewController {
     }
 
     @objc func cancel(_ sender: Any) {
-        //POST new contact here
         self.dismiss(animated: true)
     }
 
     @objc func done(_ sender: Any) {
-        //POST new contact here
+        self.view.endEditing(true)
+        showLoader()
     }
 }
 
@@ -85,7 +103,6 @@ extension AddNewContactViewController: UITextFieldDelegate {
 }
 
 extension AddNewContactViewController {
-    // MARK: - Keyboard Delegates
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {

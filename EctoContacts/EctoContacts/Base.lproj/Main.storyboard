@@ -473,14 +473,23 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-Q4-Upt">
+                                <rect key="frame" x="185" y="426" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="A8I-vT-9xK"/>
+                                    <constraint firstAttribute="width" constant="44" id="eVj-ro-tBF"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="v6K-ld-WED" firstAttribute="leading" secondItem="1jz-sR-K2G" secondAttribute="leading" id="A4N-ge-wcM"/>
+                            <constraint firstItem="Hz0-Q4-Upt" firstAttribute="centerY" secondItem="1jz-sR-K2G" secondAttribute="centerY" id="Imo-aj-TZ9"/>
                             <constraint firstItem="mbF-11-23G" firstAttribute="trailing" secondItem="H6S-4T-HG1" secondAttribute="trailing" id="Qx6-mU-SKJ"/>
                             <constraint firstItem="H6S-4T-HG1" firstAttribute="trailing" secondItem="v6K-ld-WED" secondAttribute="trailing" id="eft-Sy-IC9"/>
                             <constraint firstItem="mbF-11-23G" firstAttribute="top" secondItem="v6K-ld-WED" secondAttribute="bottom" id="h5Q-GM-d3g"/>
                             <constraint firstItem="mbF-11-23G" firstAttribute="leading" secondItem="H6S-4T-HG1" secondAttribute="leading" id="mH0-AD-sgB"/>
+                            <constraint firstItem="Hz0-Q4-Upt" firstAttribute="centerX" secondItem="1jz-sR-K2G" secondAttribute="centerX" id="njw-WG-n7l"/>
                             <constraint firstItem="v6K-ld-WED" firstAttribute="top" secondItem="H6S-4T-HG1" secondAttribute="top" id="tQr-cw-1E2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H6S-4T-HG1"/>
@@ -491,6 +500,7 @@
                         <outlet property="firstNameTextField" destination="t3e-VO-lRx" id="4j6-8N-Vo8"/>
                         <outlet property="headerView" destination="v6K-ld-WED" id="UhZ-Ri-swV"/>
                         <outlet property="lastNameTextField" destination="8jx-He-dmn" id="uOo-Lh-w4D"/>
+                        <outlet property="loader" destination="Hz0-Q4-Upt" id="yc8-tV-3Y4"/>
                         <outlet property="phoneTextField" destination="tyT-rB-nSx" id="7V2-Zi-b1S"/>
                     </connections>
                 </viewController>
