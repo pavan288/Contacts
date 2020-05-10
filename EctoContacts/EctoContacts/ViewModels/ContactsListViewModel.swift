@@ -15,7 +15,16 @@ protocol ContactsListVCDelegate: AnyObject {
 
 class ContactsListViewModel {
     weak var delegate: ContactsListVCDelegate!
-    var contacts = [Contact]()
+    var contacts = [Contact]() {
+        didSet {
+            alphabeticContactsDict = Dictionary(grouping: contacts, by: { String($0.firstName.prefix(1))})
+            let keys = alphabeticContactsDict.keys.sorted()
+            sections = keys.map({ Section(letter: $0, contacts: alphabeticContactsDict[$0]!)})
+            print(sections)
+        }
+    }
+    var sections: [Section] = []
+    var alphabeticContactsDict: [String: [Contact]] = [:]
 
     func fetchContactsList() {
         let url = NetworkManager.baseURL + "/contacts"
@@ -31,7 +40,6 @@ class ContactsListViewModel {
                     }
                     let contactsArray = try JSONDecoder().decode([Contact].self, from: data)
                     self?.contacts = contactsArray
-                    print(contactsArray)
                     self?.delegate.populateContacts()
                 } catch {
                     self?.delegate.showError(with: "Could not parse contacts!")
@@ -40,8 +48,9 @@ class ContactsListViewModel {
         }
     }
 
-    func getFullName(at index: Int) -> String {
-        let contact = contacts[index]
+    func getFullName(sectionIndex: Int, contactIndex: Int) -> String {
+        let section = sections[sectionIndex]
+        let contact = section.contacts[contactIndex]
         let fullName = [contact.firstName, contact.lastName].joined(separator: " ")
         return fullName
     }

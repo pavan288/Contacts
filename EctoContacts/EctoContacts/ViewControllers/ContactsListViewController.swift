@@ -34,8 +34,6 @@ class ContactsListViewController: UIViewController {
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
         contactsTableView.register(UINib(nibName: "ContactsTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactsTableViewCell")
-        contactsTableView.estimatedRowHeight = 64
-        contactsTableView.rowHeight = UITableView.automaticDimension
         contactsTableView.tableFooterView = UIView()
     }
 
@@ -50,13 +48,31 @@ class ContactsListViewController: UIViewController {
 
 extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.contacts.count ?? 0
+
+        let section = viewModel?.sections[section]
+        return section?.contacts.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath) as! ContactsTableViewCell
-        cell.contactName.text = viewModel?.getFullName(at: indexPath.row)
+        cell.contactName.text = viewModel?.getFullName(sectionIndex: indexPath.section, contactIndex: indexPath.row)
         return cell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel?.sections.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
+
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return viewModel?.sections.map({ $0.letter })
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel?.sections[section].letter.capitalized
     }
 }
 

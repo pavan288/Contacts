@@ -20,3 +20,8 @@ struct Contact: Codable {
         case favorite
     }
 }
+
+struct Section {
+    let letter : String
+    let contacts : [Contact]
+}
