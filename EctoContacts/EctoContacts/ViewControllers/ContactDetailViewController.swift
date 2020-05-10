@@ -45,7 +45,7 @@ class ContactDetailViewController: UIViewController {
     }
 
     @objc func editContact(_ sender: Any) {
-        print("edit pressed")
+        print("The scope for editing a contact shall be available once there is a patch functionality available on the server")
     }
 
     func populateDetails() {
@@ -85,5 +85,4 @@ class ContactDetailViewController: UIViewController {
             favourtieButton.setImage(UIImage(named: "favourite_button"), for: .normal)
         }
     }
-
 }

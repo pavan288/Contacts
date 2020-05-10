@@ -40,7 +40,11 @@ class ContactsListViewController: UIViewController {
     }
 
     @objc func addContact(_ sender: Any) {
-        print("add pressed")
+        if let controller = AddNewContactViewController.getController() {
+            let navController = UINavigationController(rootViewController: controller)
+            navController.modalPresentationStyle = .fullScreen
+            self.navigationController?.present(navController, animated: true)
+        }
     }
 
     private func fetchData() {
