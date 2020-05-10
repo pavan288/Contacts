@@ -17,6 +17,7 @@ class ContactsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        favourtieButton.layer.cornerRadius = favourtieButton.frame.size.height / 2
     }
 
     func setup(with contact: Contact) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		275C5F502468031A00C77BCD /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275C5F4F2468031A00C77BCD /* ContactDetailViewController.swift */; };
 		27B0AC412466E7DC0016B3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0AC402466E7DC0016B3B7 /* AppDelegate.swift */; };
 		27B0AC432466E7DC0016B3B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0AC422466E7DC0016B3B7 /* SceneDelegate.swift */; };
 		27B0AC452466E7DC0016B3B7 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0AC442466E7DC0016B3B7 /* ContactsListViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		275C5F4F2468031A00C77BCD /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		27B0AC3D2466E7DC0016B3B7 /* EctoContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EctoContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B0AC402466E7DC0016B3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27B0AC422466E7DC0016B3B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				27B0AC442466E7DC0016B3B7 /* ContactsListViewController.swift */,
+				275C5F4F2468031A00C77BCD /* ContactDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				27B0AC5C2467B8E80016B3B7 /* Contact.swift in Sources */,
 				27B0AC5A2467B0F30016B3B7 /* ContactsListViewModel.swift in Sources */,
 				27B0AC582467AEEC0016B3B7 /* NetworkManager.swift in Sources */,
+				275C5F502468031A00C77BCD /* ContactDetailViewController.swift in Sources */,
 				27B0AC452466E7DC0016B3B7 /* ContactsListViewController.swift in Sources */,
 				27E165442467CBEE006F9DE5 /* Themes.swift in Sources */,
 				27B0AC412466E7DC0016B3B7 /* AppDelegate.swift in Sources */,

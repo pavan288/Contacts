@@ -80,7 +80,9 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //show detail screen here
+        guard let contact = viewModel?.getContact(sectionIndex: indexPath.section, contactIndex: indexPath.row)  else { return }
+        guard let controller = ContactDetailViewController.getController(with: contact) else { return }
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
