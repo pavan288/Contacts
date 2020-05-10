@@ -21,6 +21,15 @@ class ContactsListViewController: UIViewController {
         fetchData()
         setupNavBar()
         showLoader()
+        setupNotifications()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ContactAdded"), object: nil)
+    }
+
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.fetchData), name: NSNotification.Name(rawValue: "ContactAdded"), object: nil)
     }
 
     func setupNavBar() {
@@ -47,7 +56,7 @@ class ContactsListViewController: UIViewController {
         }
     }
 
-    private func fetchData() {
+    @objc private func fetchData() {
         viewModel?.fetchContactsList()
     }
 
@@ -62,6 +71,7 @@ class ContactsListViewController: UIViewController {
         loader.isHidden = true
         loader.stopAnimating()
     }
+
 }
 
 extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource {

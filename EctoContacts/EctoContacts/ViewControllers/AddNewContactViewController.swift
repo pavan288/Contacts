@@ -122,6 +122,7 @@ extension AddNewContactViewController: AddNewContactVCDelegate {
 
     func dismiss() {
         self.dismiss(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactAdded"), object: nil)
         hideLoader()
     }
 }
