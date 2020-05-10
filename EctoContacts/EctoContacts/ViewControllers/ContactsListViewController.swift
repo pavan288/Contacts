@@ -17,6 +17,7 @@ class ContactsListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         viewModel = ContactsListViewModel()
+        viewModel?.delegate = self
         setupTableView()
         fetchData()
     }
@@ -39,5 +40,20 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         UITableViewCell()
+    }
+}
+
+extension ContactsListViewController: ContactsListVCDelegate {
+    func showError(with message: String) {
+        let alert = UIAlertController(title: "Sorry!", message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            self.dismiss(animated: true)
+        }
+        alert.addAction(okayAction)
+        self.present(alert, animated: true)
+    }
+
+    func populateContacts() {
+        contactsTableView.reloadData()
     }
 }
