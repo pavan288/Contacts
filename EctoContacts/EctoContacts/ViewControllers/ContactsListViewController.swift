@@ -57,7 +57,9 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath) as! ContactsTableViewCell
-        cell.contactName.text = viewModel?.getFullName(sectionIndex: indexPath.section, contactIndex: indexPath.row)
+        if let contact = viewModel?.getContact(sectionIndex: indexPath.section, contactIndex: indexPath.row) {
+            cell.setup(with: contact)
+        }
         return cell
     }
 

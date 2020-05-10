@@ -18,4 +18,9 @@ class ContactsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+
+    func setup(with contact: Contact) {
+        self.contactName.text = String(format: "%@ %@", contact.firstName, contact.lastName)
+        favourtieButton.isHidden = !contact.favorite
+    }
 }

@@ -47,10 +47,9 @@ class ContactsListViewModel {
         }
     }
 
-    func getFullName(sectionIndex: Int, contactIndex: Int) -> String {
+    func getContact(sectionIndex: Int, contactIndex: Int) -> Contact {
         let section = sections[sectionIndex]
         let contact = section.contacts[contactIndex]
-        let fullName = [contact.firstName, contact.lastName].joined(separator: " ")
-        return fullName
+        return contact
     }
 }
